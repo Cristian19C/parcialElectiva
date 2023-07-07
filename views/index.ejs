@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include("./template/header.ejs") %>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Peliculas marvel</h1>
+        <p>Filtro de texto</p>
+        <input type="text" id="filtro-input">
+        <button id="filtrar-text">Filtrar texto</button><br><br>
+        
+        <p>Filtro por numeros</p>
+        <input type="number" id="filtro-number">
+        <button id="filtrar-number">Filtrar numeros</button><br>
+
+        <input type="number" id="filtro-fecha-inicio" placeholder="Año de inicio">
+        <input type="number" id="filtro-fecha-fin" placeholder="Año de fin">
+        <button id="filtrar-rango">Filtrar rango</button>
+
+
+          
+        <% if (data.size > 0) { %>    
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>MovieId</th>
+                        <th>Title</th>
+                        <th>phase</th>
+                        <th>category_name</th>
+                        <th>release_year</th>
+                        <th>running_time</th>
+                        <th>rating_name</th>
+                        <th>disc_format_name</th>
+                        <th>number_discs</th>
+                        <th>viewing_format_name</th>
+                        <th>aspect_ratio_name</th>
+                        <th>status</th>
+                        <th>release_date</th>
+                        <th>budget</th>
+                        <th>gross</th>
+                        <th>time_stamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for (const [key, value] of data) { %>
+                        <tr>
+                            <td><%= value.movie_id %></td>
+                            <td><%= value.title %></td>
+                            <td><%= value.phase %></td>
+                            <td><%= value.category_name %></td>
+                            <td><%= value.release_year %></td>
+                            <td><%= value.running_time %></td>
+                            <td><%= value.rating_name %></td>
+                            <td><%= value.disc_format_name %></td>
+                            <td><%= value.number_discs %></td>
+                            <td><%= value.viewing_format_name %></td>
+                            <td><%= value.aspect_ratio_name %></td>
+                            <td><%= value.status %></td>
+                            <td><%= value.release_date %></td>
+                            <td><%= value.budget %></td>
+                            <td><%= value.gross %></td>
+                            <td><%= value.time_stamp %></td>
+                            <td class="td__info">
+                                <form action="/" method="post">
+                                    <input type="submit" class="btn btn-danger" name="movie_id" value="Borrar"/>
+                                </form>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <% } else { %>
+                <h4>No hay registros</h4>
+            <% } %>
+        </div>
+    </div>
+
+
+    <script src="js/logica.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+      
+
+</body>
+</html>
